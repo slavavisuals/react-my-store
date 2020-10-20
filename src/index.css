@@ -13,12 +13,12 @@ Variables
   /* --primaryColor: #9e3aa3; */
   /* --primaryDarkColor: #4e1d51; */
   --primaryColor: #f15025;
-  --primaryDarkColor: #c02c03;
+  --primaryDarkColor: #f0f0f0;
   --primaryFont: "Catamaran", sans-serif;
   --slantedFont: "Kaushan Script", cursive;
   --mainWhite: #fff;
   --offWhite: #f7f7f7;
-  --mainBackground: #ececec;
+  --mainBackground: #fcfcfc;
   --mainOverlay: rgba(35, 10, 36, 0.4);
   --mainBlack: #222;
   --mainGrey: #ececec;
@@ -26,8 +26,10 @@ Variables
   --mainRed: #bd0303;
   --mainTransition: all 0.3s linear;
   --mainSpacing: 0.3rem;
-  --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
-  --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  --lightShadow: 1px 1px 6px rgba(0,0,0,.15);
+  /*--lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);*/
+  --darkShadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  /*--darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);*/
   --mainBorderRadius: 0.25rem;
   --maxWidth: 40rem;
   --smallWidth: 85vw;
@@ -181,17 +183,17 @@ Hero
 ======
 */
 .hero {
-  min-height: calc(65vh);
+  min-height: calc(55vh);
   background: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.7) 50%,
-      rgba(255, 255, 255, 0.1)
-    ),
-    url("./assets/mainBcg.jpeg") center/cover no-repeat;
+          to right,
+          rgba(0, 0, 0, 0.3) 30%,
+          rgba(255, 255, 255, 0.1)
+  ),
+  url("./assets/mainBcg.jpg") center/cover no-repeat;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--primaryDarkColor);
+  color: var(--mainBackground);
 }
 .banner {
   width: var(--smallWidth);
