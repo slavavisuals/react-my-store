@@ -13,7 +13,7 @@ export default () => {
     }
     return (
         <div>
-            <button className={height > 100 ? 'scroll-btn show-scroll-btn' : 'scroll-btn'}>
+            <button className={height > 100 ? 'scroll-btn show-scroll-btn' : 'scroll-btn'} onClick={scrollBackToTop}>
                 <FaAngleDoubleUp></FaAngleDoubleUp>
             </button>
         </div>
