@@ -27,7 +27,18 @@ export default function ProductProvider({children}) {
     };
 
     const updateFilters = e => {
-        console.log(e);
+        const type = e.target.type;
+        const filter = e.target.name;
+        const value = e.target.value;
+        let filterValue;
+        if (type === 'checkbox') {
+           filterValue = e.target.checked;
+        } else if (type === 'radio') {
+            value === 'all' ? (filterValue = value) : (filterValue = parseInt(value));
+        } else {
+         filterValue = value;
+        }
+        setFilters({ ...filters, [filter]: filterValue })
     }
 
     React.useEffect(() => {
@@ -47,6 +58,39 @@ export default function ProductProvider({children}) {
 
         }
     }, []);
+
+    React.useEffect(() => {
+
+        let newProducts = [...products].sort((a, b) => a.price - b.price);
+        const {search, category, shipping, price} = filters;
+        // logic
+        if (category !== 'all') {
+            newProducts = newProducts.filter(item => item.category === category);
+        }
+        if (shipping !== false) {
+            newProducts = newProducts.filter(item => item.free_shipping ===  shipping);
+        }
+        if (search !== '') {
+            newProducts = newProducts.filter(item => {
+                let title = item.title.toLowerCase().trim();
+                return title.includes(search) ? item : null;
+            })
+        }
+        if(price != 'all') {
+            newProducts = newProducts.filter(item => {
+                if (price === 0) {
+                   return item.price < 10;
+                } else if (price === 10) {
+                   return item.price > 10 && item.price < 20;
+                } else {
+                    return item.price > 20;
+                }
+            })
+        }
+
+        setPage(0);
+        setSorted(paginate(newProducts));
+    }, [filters, products]);
 
     return (
         <ProductContext.Provider
